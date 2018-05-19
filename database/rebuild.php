@@ -12,7 +12,7 @@
  */
 
 define('APP_NAME', 'Dbbuilder');
-define('PROJECT_NAME', 'Bingo');
+define('PROJECT_NAME', 'ZinkPHP');
 define('SOURCE_DIR', dirname(__FILE__) . "/../../source/");
 
 require_once SOURCE_DIR. "bootstrap.php";
