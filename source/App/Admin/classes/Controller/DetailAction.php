@@ -46,7 +46,7 @@ trait DetailAction
             return Controller::json($data);
         }
 
-        return $this->view($data, false);
+        return $this->adminView($data, false);
     }
 }
 
