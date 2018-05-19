@@ -99,17 +99,6 @@ class Request
         return (isset($_SERVER['HTTP_MOCK']) && $_SERVER['HTTP_MOCK']);
     }
 
-
-    public static function isStudentProduct()
-    {
-        return (isset($_SERVER['HTTP_PID']) && $_SERVER['HTTP_PID'] == 1);
-    }
-
-    public static function isTeacherProduct()
-    {
-        return (isset($_SERVER['HTTP_PID']) && $_SERVER['HTTP_PID'] == 2);
-    }
-
     public static function isFromApp()
     {
         return isset($_SERVER['HTTP_CID']);
@@ -148,15 +137,6 @@ class Request
         }
 
         return FALSE;
-    }
-
-    /**
-     * 是否包含富文本数据提交
-     * @return bool
-     */
-    public static function isRtpPost()
-    {
-        return (isset($_SERVER['HTTP_RTP']) && $_SERVER['HTTP_RTP']);
     }
 
     public static function getUri()
