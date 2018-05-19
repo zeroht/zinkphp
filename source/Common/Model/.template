@@ -1,0 +1,31 @@
+<?php
+/**
+ * Pdo Model Class {{$class}}
+ * @author:  \Zink\Widget\FileGenerator
+ * @version: 1.0.0
+ * @change:
+ *   1. {{$date}} @FileGenerator: 创建；
+ */
+
+namespace Common\Model;
+use Common\Model\Pdo\{{$table}};
+
+class {{$class}} extends AbstractSingleTableModel
+{
+    /**
+     * 重写仅仅是为了定义返回值,方便ide自动提示方法
+     * @return {{$class}}
+     */
+    public static function getInstance()
+    {
+        return parent::getInstance();
+    }
+
+    protected function __construct()
+    {
+        $this->_table = {{$table}}::TABLE;
+        parent::__construct();
+    }
+}
+
+/* End of file {{$class}}.php */

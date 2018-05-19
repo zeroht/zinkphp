@@ -1,0 +1,2 @@
+"password_tip":"<{$lesson.lock_password|z_lockpassword:$lesson.classroom.lock_status:$lesson.teach_at}>",
+"password_status":"<{$lesson.classroom.lock_status|z_lockstatus:$lesson.teach_at:$lesson.lock_password}>",

@@ -1,0 +1,19 @@
+<?php
+/**
+ * Pdo Table Class {{$class}}
+ * @author:  \Zink\Widget\FileGenerator
+ * @version: 1.0.0
+ * @change:
+ *   1. {{$date}} @FileGenerator: 创建；
+ */
+
+namespace Common\Model\Pdo;
+
+use Zink\Db\Result\Record;
+
+class {{$class}} extends Record
+{
+    const TABLE = '{{$class}}';
+}
+
+/* End of file {{$class}}.php */

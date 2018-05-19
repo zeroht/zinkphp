@@ -1,0 +1,15 @@
+{
+    "id":"<{$data.id}>",
+    "uid":"<{$data.uid}>",
+    "mobile":"<{$data.mobile}>",
+    "content":"<{$data.content}>",
+    "pid":"<{$data.pid}>",
+    "phone_model":"<{$data.phone_model}>",
+    "os_version":"<{$data.os_version}>",
+    "platform":"<{$data.platform}>",
+    "status":"<{$data.status}>",
+    "status_text":"<{$data.status_text}>",
+    "updated_at":"<{$data.updated_at}>",
+    "created_at":"<{$data.created_at}>",
+    "updated_by":"<{$data.updated_by}>"
+}

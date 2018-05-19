@@ -1,0 +1,17 @@
+<!--
+  ~
+  ~
+  ~ @author:  thu
+  ~ @version: 1.0.0
+  ~ @change:
+  ~    1. 2016/6/4 @thu: 创建；
+  -->
+
+<phpunit bootstrap="./bootstrap.php"
+         beStrictAboutTestsThatDoNotTestAnything="true">
+    <testsuites>
+        <testsuite name="zink">
+            <directory>Zink</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
