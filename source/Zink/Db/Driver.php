@@ -171,6 +171,8 @@ abstract class Driver
 
         $sql = $sqlstate;
         if (is_array($binds)) {
+            $startTime = microtime(TRUE);
+
             foreach ($binds as $key => $value) {
                 /*
                 if (is_int($value)) {
@@ -191,11 +193,19 @@ abstract class Driver
                 
                 $data_type = PDO::PARAM_STR;
 
-                $eValue = self::escape($value);
-                $sql = preg_replace("/{$key}([ ,\\)])/", '\''.$eValue.'\'${1}', $sql);
-                $sql = preg_replace("/ {$key}$/", " '".$eValue."' ", $sql);
+                if (!Debugger::isOnlineMode()) {
+                    // TODO:当SQL比较长（如大数组IN语句）时，非常耗时间，线上不执行
+                    $eValue = self::escape($value);
+                    $sql = preg_replace("/{$key}([ ,\\)])/", '\'' . $eValue . '\'${1}', $sql);
+                    $sql = preg_replace("/ {$key}$/", " '" . $eValue . "' ", $sql);
+                }
 
                 $this->_pdoStatement->bindValue($key, $value, $data_type);
+            }
+
+            $time = round(microtime(TRUE) - $startTime,4);
+            if ($time > 1) {
+                $this->_logger->warning("[SQL bindValue Times = {$time}]: $sql");
             }
         }
 
