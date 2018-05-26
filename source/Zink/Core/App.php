@@ -150,7 +150,7 @@ class App
      * @access public
      * @param Exception $e 异常对象
      */
-    static public function appException(\Exception $e)
+    static public function appException($e)
     {
         if ($e instanceof Exception) {
             $e->log();
