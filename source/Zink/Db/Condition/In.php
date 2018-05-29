@@ -49,6 +49,9 @@ class In extends SqlCondition
             $this->_statement = "{$key} = ".$inPlaceholders[0];
             $value = $this->_binds[$inPlaceholders[0]];
             $this->_isEmpty = ($value === '' || $value === null);
+        } else {
+            // 占位用
+            $this->_statement = "1 = 1";
         }
         
         //parent::__construct($key, $value, $alias);
