@@ -27,7 +27,7 @@ abstract class AbstractView
     const TYPE_EXCEL = 'excel';
     
     protected $_tpl = null;
-    protected $_data = '';
+    protected $_data = [];
 
     /**
      * AbstractView constructor.
