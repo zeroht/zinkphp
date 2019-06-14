@@ -45,7 +45,7 @@ trait SearchAction
         $this->_p = $this->get('p', 'intval', 1);
         $this->_pn = $this->get('pn', 'intval', Constant::get('PAGER_PN'));
         $sort = $this->get('sort');
-        if (preg_match('/^[\w-]+/', $sort)){
+        if (preg_match('/^[\w-]+$/', $sort)){
             // 过滤掉非法的排序词,防攻击
             $asc = $this->get('asc', 'intval', 0);
             $this->_sort = [$sort => $asc];

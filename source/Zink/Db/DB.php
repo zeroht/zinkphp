@@ -232,10 +232,10 @@ class DB
      */
     public function limit($start = 0, $cnt = null)
     {
+        $start = intval($start);
         if ($cnt === null) {
             $this->_queryLimit = $start ? ' LIMIT ' . $start : '';
         } else {
-            $start = intval($start);
             $cnt = intval($cnt);
             $this->_queryLimit = ' LIMIT ' . $start . ',' . $cnt;
         }
@@ -575,6 +575,11 @@ class DB
         if (is_array($orderbys) && count($orderbys) > 0){
             $orderList = [];
             foreach ($orderbys as $by => $isAsc){
+                if (!self::isValidField($by)){
+                    // TODO: 过滤非法，防SQL注入
+                    continue;
+                }
+
                 $by = $tableAlias ? $tableAlias.'.'.$by : $by;
                 $sort = $isAsc ? 'ASC' : 'DESC';
                 $orderList[] = self::parseKey($by).' '.$sort;
@@ -615,6 +620,17 @@ class DB
     public static function transRollback()
     {
         return self::$_transLink ? self::$_transLink->transRollback() : FALSE;
+    }
+
+    /**
+     * 是否非法字段名
+     * name,nick_name,name2,`order`, student.name, ...
+     * @param $field
+     * @return false|int
+     */
+    public static function isValidField($field)
+    {
+        return preg_match('/^[A-Za-z0-9\._`]+$/', $field);
     }
 
 }
