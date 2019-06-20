@@ -232,10 +232,11 @@ class DB
      */
     public function limit($start = 0, $cnt = null)
     {
-        $start = intval($start);
         if ($cnt === null) {
+            $start = preg_replace("/[^0-9\,]/", "", $start);
             $this->_queryLimit = $start ? ' LIMIT ' . $start : '';
         } else {
+            $start = intval($start);
             $cnt = intval($cnt);
             $this->_queryLimit = ' LIMIT ' . $start . ',' . $cnt;
         }
